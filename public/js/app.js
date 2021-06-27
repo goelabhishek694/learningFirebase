@@ -1,5 +1,6 @@
 const requestModal = document.querySelector('.new-request');
 const requestLink = document.querySelector('.add-request');
+const btnClick=document.querySelector('.click');
 
 // open request modal
 requestLink.addEventListener('click', () => {
@@ -12,3 +13,12 @@ requestModal.addEventListener('click', (e) => {
     requestModal.classList.remove('open');
   }
 });
+
+btnClick.addEventListener("click",function(){
+  const sayHello=firebase.functions().httpsCallable('sayHello');
+  sayHello({'name': 'Abhishek' },"123434").then(result=>{
+    // console.log(result);
+    console.log(result.data);
+  });
+});
+
