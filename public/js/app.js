@@ -14,11 +14,13 @@ requestModal.addEventListener('click', (e) => {
   }
 });
 
-btnClick.addEventListener("click",function(){
-  const sayHello=firebase.functions().httpsCallable('sayHello');
-  sayHello({'name': 'Abhishek' },"123434").then(result=>{
-    // console.log(result);
-    console.log(result.data);
-  });
-});
+// btnClick.addEventListener("click",function(){
+//   const sayHello=firebase.functions().httpsCallable('sayHello');
+//   sayHello({'name': 'Abhishek' },"123434").then(result=>{
+//     // console.log(result);
+//     console.log(result.data);
+//   });
+// });
+
+
 

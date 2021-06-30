@@ -3,7 +3,7 @@ const authModals = document.querySelectorAll('.auth .modal');
 const authWrapper = document.querySelector('.auth');
 const registerForm=document.querySelector('.register');
 const loginForm=document.querySelector('.login');
-
+const signOut=document.querySelector('.sign-out');
 // toggle auth modals
 authSwitchLinks.forEach(link => {
   link.addEventListener('click', () => {
@@ -43,8 +43,32 @@ loginForm.addEventListener("submit",(e)=>{
     })
 });
 
+//signOut
+signOut.addEventListener('click',()=>{
+    firebase.auth().signOut()
+    .then(()=>{
+        console.log("signed out");
+    });
+});
+
+
 
 // setting up listener for forebease auth services  it listens when user log in and logs out 
 // we do this to perform particular actions when log in log out happens 
 
-firebase.auth().onAuthStateChanged
+firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+        //sign in and register pe yaha 
+        console.log("inside user");
+        authWrapper.classList.remove('open');
+        authModals.forEach((modal)=>{
+            modal.classList.remove('active');
+        });
+    }
+    else{
+        //sign out pe yaha aate h 
+        console.log("outside user");
+        authWrapper.classList.add('open');
+        authModals[0].classList.add('active');
+    }
+});
