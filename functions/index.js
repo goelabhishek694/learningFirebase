@@ -63,10 +63,9 @@ exports.addRequest=functions.https.onCall((data, context)=>{
         "request must be less than 30 characters"
     );
   }
-  admin.firestore().collection("requests").add({
-    request: data.text,
-    upvotes: 0}
-  );
-});
-
+//   admin.firestore().collection("requests").add({
+//     request: data.text,
+//     upvotes: 0}
+//   );
+// });
 
